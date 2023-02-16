@@ -1,0 +1,195 @@
+.personalloan-main-container {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  background-image: url("../../Assets/compobg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .personalloan-container {
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+}
+
+.personalloan-close {
+  height: 10px;
+  width: 80px;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: black;
+  border: 1px solid black;
+  position: fixed;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 20px;
+  letter-spacing: 3px;
+  box-shadow: 0 7px 29px 0 hsl(240deg 5% 41% / 20%);
+  cursor: pointer;
+  color: white;
+}
+
+.personalloan-sub-container1 {
+  height: 100vh;
+  width: 100%;
+  margin: 1px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .personalloan-image-container {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .image-container {
+      height: 645px;
+      width: 360px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  .personalloan-content-container {
+    width: 100%;
+    height: 70%;
+
+    .personalloan-tag {
+      font-size: 30px;
+      font-weight: 600;
+      width: 100%;
+      letter-spacing: 2px;
+      margin: 0 0 10px 0;
+    }
+    .personalloan-description {
+      font-size: 18px;
+      width: 90%;
+    }
+  }
+}
+
+.keyword-container {
+  width: 90%;
+  height: 60%;
+  margin: 40px 0;
+  .keyword-sub-container {
+    width: 50%;
+    height: 80%;
+    float: left;
+    .keyword {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+  .keyword-tag {
+    font-size: 25px;
+    margin: 0 0 10px 0;
+  }
+}
+
+.personalloan-main-container::after {
+  content: " ";
+  background-color: #38aaf7d5;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+}
+
+.personalloan-buble {
+  background-color: #38aaf7d5;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 20px;
+  left: 300px;
+}
+
+.personalloan-buble1 {
+  background-color: #38abf79d;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 300px;
+  left: 500px;
+}
+.small-buble {
+  background-color: #38abf79d;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 340px;
+  left: 610px;
+}
+.medium-buble {
+  background-color: #38abf79d;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 260px;
+  left: 590px;
+}
+
+@media only screen and (max-width: 480px) {
+  .personalloan-container {
+    height: 100vh !important;
+    overflow: auto !important;
+  }
+  .personalloan-sub-container1 {
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+    padding: 5%;
+  }
+  .personalloan-close {
+    bottom: 0% !important;
+    position: sticky;
+    width: 160px;
+    margin: 85px 0 0;
+    right: 0;
+    float: right;
+  }
+  .keyword {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+  }
+  .personalloan-tag {
+    font-size: 25px !important;
+  }
+  .personalloan-description {
+    font-size: 16px !important;
+  }
+  .personalloan-image-container {
+    width: 60% !important;
+  }
+}

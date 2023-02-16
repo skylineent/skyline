@@ -1,0 +1,160 @@
+.form-main-container {
+  height: 100vh;
+  width: 0%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.form {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.842);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: all ease-in-out 0.5s;
+}
+
+.form-content {
+  height: 600px;
+  width: 650px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 20px;
+}
+
+input[type="text" i] {
+  height: 20px;
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  border-bottom: 2px solid black;
+  width: 100%;
+  font-size: 15px;
+}
+
+.input-row {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 90%;
+
+  input:focus-visible {
+    outline: none;
+    filter: drop-shadow(5px 6px 4px rgba(0, 0, 0, 0.3));
+  }
+  label {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: gray;
+    font-size: 15px;
+    transition: all ease-in-out 0.5s;
+    cursor: pointer;
+
+    &.active {
+      transform: translateY(-20px) scale(0.8);
+      transform-origin: 0 0;
+      color: black;
+      transition: all ease-in-out 0.5s;
+      border-radius: 0;
+    }
+  }
+}
+input[type="text" i]:focus-visible + label {
+  transform: translateY(-20px) scale(0.8);
+  transform-origin: 0 0;
+  color: black;
+  transition: all ease-in-out 0.5s;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.form-close {
+  font-size: 30px;
+  text-align: end;
+  display: flex;
+  padding: 0px 1%;
+  flex-direction: row-reverse;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.gender-container {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  height: 50px;
+}
+.gender-tag {
+  display: flex;
+  width: 90%;
+  justify-content: flex-start;
+  margin: 10px 0;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.gender-sub-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: flex-start;
+
+  .gender-wraper {
+    width: 30%;
+    gap: 5px;
+    display: flex;
+    line-height: 50px;
+  }
+}
+.submit {
+  width: 80px;
+  padding: 10px;
+  color: white;
+  background-image: linear-gradient(90deg, rgb(25, 101, 131), black);
+  font-size: 15px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0px 0 10px;
+}
+
+.existing-wraper {
+  width: 90%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.existing-sub-wraper {
+  width: 30%;
+  gap: 10px;
+  display: flex;
+  line-height: 50px;
+}
+@media only screen and (max-width: 480px) {
+  .gender-sub-container .gender-wraper {
+    width: 50%;
+    gap: 5px;
+    display: flex;
+    line-height: 35px;
+  }
+}

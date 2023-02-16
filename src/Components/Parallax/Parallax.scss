@@ -1,0 +1,102 @@
+.parallax-main-container {
+  height: auto;
+  width: 90%;
+  padding: 0 5%;
+}
+
+.parallax {
+  background-image: url("../../Assets/parabg.jpg");
+  height: 500px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.para-content-container {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(8, 8, 8, 0.514);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .para-sub-container1 {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .para-tag {
+      width: 100%;
+      font-size: 35px;
+      font-weight: 600;
+      color: white;
+    }
+    .para-sub-tag {
+      width: 100%;
+      font-size: 20px;
+      color: skyblue;
+    }
+  }
+}
+
+.para-sub-container2 {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .para-counter-box {
+    background-image: linear-gradient(90deg, white, skyblue);
+    height: 100px;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border-radius: 10px;
+    .counter-box {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+    }
+    .para-counter-tag {
+      font-size: 15px;
+      text-align: center;
+      font-weight: 600;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .para-content-container {
+    flex-direction: column;
+  }
+  .para-sub-container1 {
+    width: 90% !important;
+  }
+  .para-tag {
+    font-size: 25px !important;
+  }
+  .para-sub-tag {
+    font-size: 18px !important;
+  }
+  .para-sub-container2 {
+    width: 100%;
+  }
+  .para-counter-box {
+    width: 100px !important;
+  }
+  .counter-box {
+    font-size: 20px !important;
+  }
+}
