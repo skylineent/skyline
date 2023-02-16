@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./header.scss";
 import Logo from "../../Assets/logo.png";
 
@@ -13,6 +13,15 @@ function Header() {
       document.body.style.overflow = "unset";
     }
   }
+
+  useEffect(() => {
+    if (hamactive == "open") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, []);
+
   const onOutsideClick = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       sethamActive("");
@@ -127,7 +136,6 @@ function Header() {
 
         <div
           className="nav-tray"
-          ref={modalRef}
           onClick={onOutsideClick}
           style={{
             height: hamactive == "open" ? "100vh" : "0",
@@ -190,7 +198,11 @@ function Header() {
           </div>
         </div>
         <div className="nav-tray-container">
-          <div id="nav-icon1" className={hamactive} onClick={open}>
+          <div
+            id="nav-icon1"
+            className={hamactive}
+            onClick={() => sethamActive(hamactive == "open" ? "" : "open")}
+          >
             <span></span>
             <span></span>
             <span></span>
