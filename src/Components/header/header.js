@@ -109,8 +109,12 @@ function Header() {
           <div className="logo-container">
             <img src={Logo} alt="" />
           </div>
-          <div className="firm-name">SKYLINE</div>
+          <div className="firm-name-container">
+            <div className="firm-name">SKYLINE</div>
+            <div className="firm-sub-tag">ENTERPRISE</div>
+          </div>
         </div>
+
         <div className="header-conntent-container">
           <div className="header-content-tag">
             {" "}
