@@ -1,7 +1,39 @@
 import React, { useState } from "react";
 import "./Form.scss";
+import axios from "axios";
+import PokemonList from "../../test";
 
 export default function Form({ handleClick }) {
+  // form states
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+
+  // submit event
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(name, email, number);
+    const data = {
+      Name: name,
+      Email: email,
+      Number: number,
+    };
+    axios
+      .post(
+        "https://sheet.best/api/sheets/9b58bb4e-ceb6-46a7-94b0-ea8fb10eac7b",
+        data
+      )
+      .then((response) => {
+        console.log(response);
+        // clearing form fields
+        setName("");
+        setEmail("");
+        setNumber("");
+      });
+  };
+
   const [openForm, setOpenForm] = useState(false);
   const [testimonial, setTestimonial] = useState({
     name: "",
@@ -45,7 +77,7 @@ export default function Form({ handleClick }) {
 
   const submitForm = () => {
     setTestimonialList([...[...testimonialList, testimonial]]);
-    setTestimonial({ name: "", desc: "", gender: "Male" });
+    setTestimonial({ name: "", email: "", number: "" });
     setOpenForm(false);
   };
   return (
@@ -56,127 +88,49 @@ export default function Form({ handleClick }) {
             <div className="form-close" onClick={handleClick}>
               <AiFillCloseCircle />
             </div>
-            <div className="input-row">
-              <input
-                type="text"
-                id="name"
-                value={testimonial.name}
-                onChange={(e) =>
-                  setTestimonial({ ...testimonial, name: e.target.value })
-                }
-              />
-              <label className={`${testimonial.name ? "active" : ""}`}>
-                Name
-              </label>
-            </div>
-            <div className="input-row">
-              <input
-                type="text"
-                id="name"
-                value={testimonial.desc}
-                onChange={(e) =>
-                  setTestimonial({ ...testimonial, desc: e.target.value })
-                }
-              />
-              <label className={`${testimonial.desc ? "active" : ""}`}>
-                Number
-              </label>
-            </div>
-            <div className="input-row">
-              <input
-                type="text"
-                id="name"
-                value={testimonial.desc}
-                onChange={(e) =>
-                  setTestimonial({ ...testimonial, desc: e.target.value })
-                }
-              />
-              <label className={`${testimonial.desc ? "active" : ""}`}>
-                Remark
-              </label>
-            </div>
-            <div className="gender-tag">Looking For</div>
-            <div className="gender-sub-container">
-              <div className="gender-wraper">
+            <PokemonList />
+            <form autoComplete="off" onSubmit={handleSubmit}>
+              <div className="input-row">
                 <input
-                  type="radio"
-                  id="personal loan"
-                  name="fav_language"
-                  value="personal loan"
+                  type="text"
+                  required
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
                 />
-                <label for="personal loan">Personal Loan</label>
+                <label htmlFor="name" className={`${name ? "active" : ""}`}>
+                  Name
+                </label>
               </div>
-              <div className="gender-wraper">
+              <div className="input-row">
                 <input
-                  type="radio"
-                  id="car loan"
-                  name="fav_language"
-                  value="car loan"
+                  type="text"
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 />
-                <label for="car loan">Car Loan</label>
+                <label htmlFor="email" className={`${email ? "active" : ""}`}>
+                  Email
+                </label>
               </div>
-              <div className="gender-wraper">
+              <div className="input-row">
                 <input
-                  type="radio"
-                  id="mortagage loan"
-                  name="fav_language"
-                  value="mortagage loan"
+                  type="text"
+                  required
+                  onChange={(e) => setNumber(e.target.value)}
+                  value={number}
                 />
-                <label for="mortagage loan">Mortagage Loan</label>
+                <label htmlFor="number" className={`${number ? "active" : ""}`}>
+                  Number
+                </label>
               </div>
-              <div className="gender-wraper">
-                <input
-                  type="radio"
-                  id="home loan"
-                  name="fav_language"
-                  value="home loan"
-                />
-                <label for="home loan">Home Loan</label>
+              <br />
+              <br />
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <button type="submit" className="submit" onClick={submitForm}>
+                  Submit
+                </button>
               </div>
-              <div className="gender-wraper">
-                <input
-                  type="radio"
-                  id="land loan"
-                  name="fav_language"
-                  value="land loan"
-                />
-                <label for="land loan">Land Loan</label>
-              </div>
-              <div className="gender-wraper">
-                <input
-                  type="radio"
-                  id="construction loan"
-                  name="fav_language"
-                  value="construction loan"
-                />
-                <label for="construction loan">Construction Loan</label>
-              </div>
-              <div className="gender-wraper">
-                <input
-                  type="radio"
-                  id="business loan"
-                  name="fav_language"
-                  value="business loan"
-                />
-                <label for="business loan">Business Loan</label>
-              </div>
-            </div>
-            <div className="gender-tag">Any Existing Loan ?</div>
-            <div className="existing-wraper">
-              <div className="existing-sub-wraper">
-                <input type="radio" id="yes" name="language" value="yes" />
-                <label for="yes">Yes</label>
-              </div>{" "}
-              <div className="existing-sub-wraper">
-                <input type="radio" id="no" name="language" value="no" />
-                <label for="no">No</label>
-              </div>
-            </div>
-
-            <br></br>
-            <div className="submit" id="submit" onClick={submitForm}>
-              Submit &nbsp; <IoMdSend />
-            </div>
+            </form>
           </div>
         </div>
       </div>
