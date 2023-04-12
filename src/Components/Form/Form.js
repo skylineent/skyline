@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Form.scss";
 import axios from "axios";
-import PokemonList from "../../test";
 
 export default function Form({ handleClick }) {
   // form states
@@ -88,7 +87,6 @@ export default function Form({ handleClick }) {
             <div className="form-close" onClick={handleClick}>
               <AiFillCloseCircle />
             </div>
-            <PokemonList />
             <form autoComplete="off" onSubmit={handleSubmit}>
               <div className="input-row">
                 <input
