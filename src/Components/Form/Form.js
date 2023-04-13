@@ -6,18 +6,19 @@ export default function Form({ handleClick }) {
   // form states
 
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [requirment, setRequirment] = useState("");
   const [number, setNumber] = useState("");
+  const [loantype, setLoantype] = useState("");
 
   // submit event
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(name, email, number);
     const data = {
       Name: name,
-      Email: email,
+      Requirment: requirment,
       Number: number,
+      LoanType: loantype,
     };
     axios
       .post(
@@ -28,8 +29,9 @@ export default function Form({ handleClick }) {
         console.log(response);
         // clearing form fields
         setName("");
-        setEmail("");
+        setRequirment("");
         setNumber("");
+        setLoantype("");
       });
   };
 
@@ -76,7 +78,7 @@ export default function Form({ handleClick }) {
 
   const submitForm = () => {
     setTestimonialList([...[...testimonialList, testimonial]]);
-    setTestimonial({ name: "", email: "", number: "" });
+    setTestimonial({ name: "", Requirment: "", number: "" });
     setOpenForm(false);
   };
   return (
@@ -96,18 +98,43 @@ export default function Form({ handleClick }) {
                   value={name}
                 />
                 <label htmlFor="name" className={`${name ? "active" : ""}`}>
-                  Name
+                  Name <span> (Ex.&nbsp; "John due")</span>
                 </label>
               </div>
+
+              <div className="input-list-row">
+                <label htmlFor="loan" className={loantype ? "active" : ""}>
+                  Loan Type
+                </label>
+                <input
+                  list="loans"
+                  name="loan"
+                  id="loan"
+                  required
+                  onChange={(e) => setLoantype(e.target.value)}
+                  value={loantype}
+                />
+                <datalist id="loans">
+                  <option value="Personal" />
+                  <option value="Home" />
+                  <option value="Car" />
+                  <option value="Land" />
+                  <option value="Business" />
+                </datalist>
+              </div>
+
               <div className="input-row">
                 <input
                   type="text"
                   required
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
+                  onChange={(e) => setRequirment(e.target.value)}
+                  value={requirment}
                 />
-                <label htmlFor="email" className={`${email ? "active" : ""}`}>
-                  Email
+                <label
+                  htmlFor="Requirment"
+                  className={`${requirment ? "active" : ""}`}
+                >
+                  Requirment <span> (Ex.&nbsp; "1 Lakh")</span>
                 </label>
               </div>
               <div className="input-row">
@@ -123,7 +150,7 @@ export default function Form({ handleClick }) {
               </div>
               <br />
               <br />
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <div style={{ display: "flex", justifyContent: "center" }}>
                 <button type="submit" className="submit" onClick={submitForm}>
                   Submit
                 </button>
